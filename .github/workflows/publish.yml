@@ -19,5 +19,5 @@ jobs:
       - run: npm version $(echo "${GITHUB_REF}" | sed 's/refs\/tags\///') --git-tag-version false
       - run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm publish
