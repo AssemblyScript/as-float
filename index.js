@@ -1,7 +1,3 @@
 import { MathWasmBase64 } from "./build/math.js";
 
-const exports = (await WebAssembly.instantiate(Buffer.from(MathWasmBase64, "base64"))).instance.exports;
-
-export function f64_pow(value, exponent) {
-  return exports.f64_pow(value, exponent);
-}
+export const {f64_pow} = (await WebAssembly.instantiateStreaming(fetch(MathWasmBase64))).instance.exports;
